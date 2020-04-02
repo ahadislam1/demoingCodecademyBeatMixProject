@@ -33,5 +33,23 @@ const invert = drumName => {
 }
 
 const getNeighborPads = (x, y, size) => {
-    
+    if (x < size && y < size && x >= 0 && y >= 0) {
+        if (x === size - 1 && y === size - 1) {
+            return [[x - 1, y], [x, y - 1]]
+        } else if (x === 0 && y === 0) {
+            return [[x + 1, y], [x, y + 1]]
+        } else if (x === 0) {
+            return [[x + 1, y], [x, y + 1], [x, y - 1]]
+        } else if (x === size - 1) {
+            return [[x - 1, y], [x, y + 1], [x, y + 1]]
+        } else if (y === 0) {
+            return [[x + 1, y], [x, y + 1], [x - 1, y]]
+        } else if (y === size -1) {
+            return [[x + 1, y], [x, y - 1], [x - 1, y]]
+        } else {
+            return [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]]
+        }
+    } else {
+        return []
+    }
 }
